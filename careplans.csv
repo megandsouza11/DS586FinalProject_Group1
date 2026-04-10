@@ -1,3 +1,4 @@
+You have exceeded a secondary rate limit. Please wait a few minutes before you try again. For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)
 Id,START,STOP,PATIENT,ENCOUNTER,CODE,DESCRIPTION,REASONCODE,REASONDESCRIPTION
 a8f621f8-5847-eb45-43a8-80ff30b1b700,1997-11-05,,a8f621f8-5847-eb45-6038-24aa206cec10,a8f621f8-5847-eb45-7402-b5126e43d12d,384758001,Self-care interventions (procedure),,
 a8f621f8-5847-eb45-83db-10cbe6e53e4b,2017-03-28,2017-04-16,a8f621f8-5847-eb45-6038-24aa206cec10,a8f621f8-5847-eb45-1055-6f28fecd2476,225358003,Wound care (regime/therapy),283371005,Laceration of forearm (disorder)
