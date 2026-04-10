@@ -79,6 +79,14 @@ def parse_symptom_list(x):
 
 symptoms["SYMPTOM_LIST"] = symptoms["SYMPTOMS"].apply(parse_symptom_list)
 
+# Get all unique pathologies per patient (not just the first)
+patient_pathologies = (
+    symptoms.groupby("PATIENT")["PATHOLOGY"]
+    .apply(lambda x: sorted(list(set(x))))
+    .reset_index()
+    .rename(columns={"PATHOLOGY": "PATHOLOGY_LIST"})
+)
+
 # aggregate to one row per patient, taking first value for demographics and max for NUM_SYMPTOMS
 patient_base = symptoms.groupby("PATIENT").agg({
     "GENDER": "first",
@@ -146,6 +154,13 @@ meta["PATHOLOGY"] = meta["PATHOLOGY"].fillna("unknown")
 meta["SYMPTOM_LIST"] = meta["SYMPTOM_LIST"].apply(lambda x: x if isinstance(x, list) else [])
 meta["CAREPLAN_LIST"] = meta["CAREPLAN_LIST"].apply(lambda x: x if isinstance(x, list) else [])
 
+# REMOVE PATIENTS WITH 0 SYMPTOMS
+before = len(meta)
+meta = meta[meta["SYMPTOM_LIST"].apply(len) > 0].copy()
+after = len(meta)
+print(f"\nRemoved {before - after} patients with 0 symptoms")
+print(f"Remaining patients: {after}")
+
 # encode categorical variables
 meta_encoded = pd.get_dummies(
     meta,
@@ -196,3 +211,5 @@ plt.ylabel("Count")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
+
