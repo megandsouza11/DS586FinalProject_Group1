@@ -3,9 +3,9 @@ import numpy as np
 import ast
 
 # load the files 
-careplans = pd.read_csv("../careplans.csv")
-symptoms = pd.read_csv("../symptoms.csv")
-patients = pd.read_csv("../patients.csv")
+careplans = pd.read_csv("../P1000/careplans.csv")
+symptoms  = pd.read_csv("../P1000/symptoms.csv")
+patients  = pd.read_csv("../P1000/patients.csv")
 
 print("careplans columns:", careplans.columns.tolist())
 print("symptoms columns:", symptoms.columns.tolist())
